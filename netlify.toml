@@ -3,7 +3,6 @@
 
 [[redirects]]
   from = "/*"
-  to = "${REDIRECT_TO}"
+  to = "/.netlify/functions/redirect"
   status = 301
   force = true
-  
