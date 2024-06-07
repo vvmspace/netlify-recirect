@@ -7,7 +7,7 @@ exports.handler = async function (event, context) {
   if (!path || path === "/" || path === "/index.html") {
     return {
       statusCode: 200,
-      body: fs.readFileSync(join(__dirname, "index.html")).toString(),
+      body: fs.readFileSync(join(__dirname, "../..", "index.html")).toString(),
     };
   }
 
