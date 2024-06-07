@@ -1,16 +1,14 @@
-const fs = require('fs');
-const path = require('path');
+const fs = require("fs");
+const { join } = require("path");
 
-exports.handler = async function(event, context) {
-  const redirectTo = process.env.REDIRECT_TO || "https://example.com";
-  const requestPath = event.path;
+exports.handler = async function (event, context) {
+  const path = event.path.split("/redirect")[1];
 
-  return {
-    statusCode: 200,
-    body: JSON.stringify({
-        event,
-        context,
-    })
+  if (!path || path === "/" || path === "/index.html") {
+    return {
+      statusCode: 200,
+      body: fs.readFileSync(join(__dirname, "index.html")).toString(),
+    };
   }
 
   return {
